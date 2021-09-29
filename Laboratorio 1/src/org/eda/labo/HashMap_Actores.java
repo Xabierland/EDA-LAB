@@ -41,7 +41,7 @@ public class HashMap_Actores
             Actor unActor=mapa.get(key);
             unActor.anadirPeliculaALista(pPeli);
             mapa.remove(key);
-            mapa.put(key,valor);
+            mapa.put(key,unActor);
         }
     }
 
@@ -60,8 +60,10 @@ public class HashMap_Actores
             ArrayList<Pelicula> lista=unActor.getListaPelicula();
             for(Pelicula peli : lista)
             {
-
+                System.out.println("Actor "+unActor.getNombre()+" eliminado de "+peli.getNombre());
+                HashMap_Peliculas.getMiMapa().buscarPelicula(peli.getNombre()).eliminarActorDeLista(unActor);
             }
+            mapa.remove(key);
         }
         else
         {

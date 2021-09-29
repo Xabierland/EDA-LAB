@@ -44,6 +44,18 @@ public class Pelicula
         }
     }
 
+    public void eliminarActorDeLista(Actor unActor)
+    {
+        if(lista.contains(unActor))
+        {
+            lista.remove(unActor);
+        }
+        else
+        {
+            System.out.println("El actor no estaba en la lista");
+        }
+    }
+
     public void imprimirLista()
     {
         for (Actor actor : lista) {

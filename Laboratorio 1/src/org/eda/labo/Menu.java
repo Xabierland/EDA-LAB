@@ -72,7 +72,7 @@ public class Menu
                     unaPelicula.incrementarRecaudacion();
                     break;
                 case 6:
-
+                    HM_Actor.eliminarActor(null);
                     break;
                 case 7:
                     break;
