@@ -1,5 +1,6 @@
 package org.eda.labo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class HashMap_Actores
     //Methods
 
     /*
-    @return Devuelve la unica instacia de HashMap de Actores
+     * @return Devuelve la unica instacia de HashMap de Actores
      */
     public static HashMap_Actores getMiMapa()
     {
@@ -29,17 +30,54 @@ public class HashMap_Actores
         return miMapa;
     }
 
-    public void anadirEntrada(String key, Actor valor)
+    public void anadirActor(String key, Actor valor, Pelicula pPeli)
     {
-        mapa.putIfAbsent(key, valor);
+        if (!mapa.containsKey(key))
+        {
+            mapa.put(key, valor);
+        }
+        else
+        {
+            Actor unActor=mapa.get(key);
+            unActor.anadirPeliculaALista(pPeli);
+            mapa.remove(key);
+            mapa.put(key,valor);
+        }
     }
 
-    public Actor buscarActor()
+    public void eliminarActor(String key)
     {
-        System.out.println("\nIntroduce el nombre del actor");
-        Scanner sn=new Scanner(System.in);
-        String nombre = sn.nextLine();
-        return mapa.get(nombre);
+        if(key==null)
+        {
+            System.out.println("Cual es el nombre del actor a eliminar");
+            Scanner sn=new Scanner(System.in);
+            key=sn.nextLine();
+        }
+
+        Actor unActor=buscarActor(key);
+        if (unActor!=null)
+        {
+            ArrayList<Pelicula> lista=unActor.getListaPelicula();
+            for(Pelicula peli : lista)
+            {
+
+            }
+        }
+        else
+        {
+            System.out.println("No se ha encontrado actor con ese nombre");
+        }
+    }
+
+    public Actor buscarActor(String key)
+    {
+        if(key==null)
+        {
+            System.out.println("\nIntroduce el nombre del actor");
+            Scanner sn=new Scanner(System.in);
+            key = sn.nextLine();
+        }
+        return mapa.get(key);
     }
 
     public void reset()

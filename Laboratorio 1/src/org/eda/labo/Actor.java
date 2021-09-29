@@ -20,12 +20,17 @@ public class Actor
         return nombre;
     }
 
-    public void anadirPeliculaAMapa(Pelicula unaPelicula)
+    public void anadirPeliculaALista(Pelicula unaPelicula)
     {
         if(!lista.contains(unaPelicula))
         {
             lista.add(unaPelicula);
         }
+    }
+
+    public ArrayList<Pelicula> getListaPelicula()
+    {
+        return lista;
     }
 
     public void imprimirLista()

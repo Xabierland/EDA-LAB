@@ -54,23 +54,25 @@ public class Menu
                     datos.cargarLista();
                     break;
                 case 1:
-                    System.out.println(ListaActores.getMiListaActores().buscarActor().getNombre());
+
                     break;
                 case 2:
+
                     break;
                 case 3:
-                    unActor= HM_Actor.buscarActor();
+                    unActor= HM_Actor.buscarActor(null);
                     unActor.imprimirLista();        //COMPROBACION
                     break;
                 case 4:
-                    unaPelicula=HM_Peli.buscarPelicula();
+                    unaPelicula=HM_Peli.buscarPelicula(null);
                     unaPelicula.imprimirLista();   //COMPROBACION
                     break;
                 case 5:
-                    unaPelicula=HM_Peli.buscarPelicula();
+                    unaPelicula=HM_Peli.buscarPelicula(null);
                     unaPelicula.incrementarRecaudacion();
                     break;
                 case 6:
+
                     break;
                 case 7:
                     break;

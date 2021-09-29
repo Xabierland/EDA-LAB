@@ -26,15 +26,18 @@ public class HashMap_Peliculas {
 
     public void anadirEntrada(String key, Pelicula valor)
     {
-        mapa.putIfAbsent(key, valor);
+        if(mapa.containsKey(key))
+            mapa.put(key, valor);
     }
 
-    public Pelicula buscarPelicula()
+    public Pelicula buscarPelicula(String pNombre)
     {
-        System.out.println("\nIntroduce el nombre de la pelicula");
-        Scanner sn=new Scanner(System.in);
-        String Title = sn.nextLine();
-        return mapa.get(Title);
+        if(pNombre==null) {
+            System.out.println("\nIntroduce el nombre de la pelicula");
+            Scanner sn = new Scanner(System.in);
+            pNombre = sn.nextLine();
+        }
+        return mapa.get(pNombre);
     }
 
     public void reset()

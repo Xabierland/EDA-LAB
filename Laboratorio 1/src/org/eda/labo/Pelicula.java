@@ -32,7 +32,7 @@ public class Pelicula
         System.out.println("Esta pelicula a recudado "+Recaudacion+"$");
     }
 
-    public void anadirActorAMapa(Actor unActor)
+    public void anadirActorALista(Actor unActor)
     {
         if(!lista.contains(unActor))
         {
