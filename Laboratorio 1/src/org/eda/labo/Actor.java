@@ -1,22 +1,38 @@
 package org.eda.labo;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Actor
 {
-    //Atributos
+    //Attributes
     private String nombre;
     private ArrayList<Pelicula> lista= new ArrayList<Pelicula>();
 
-    //Contructora
+    //Constructor
     public Actor(String pNombre)
     {
         nombre=pNombre;
     }
 
+    //Methods
     public String getNombre()
     {
         return nombre;
+    }
+
+    public void anadirPeliculaAMapa(Pelicula unaPelicula)
+    {
+        if(!lista.contains(unaPelicula))
+        {
+            lista.add(unaPelicula);
+        }
+    }
+
+    public void imprimirLista()
+    {
+        for (Pelicula pelicula : lista)
+        {
+            System.out.println(pelicula.getNombre());
+        }
     }
 }

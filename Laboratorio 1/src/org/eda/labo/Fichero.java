@@ -12,7 +12,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista.txt";
+        Dir="src/files/lista2.txt";
     }
 
     //Methods
@@ -53,10 +53,13 @@ public class Fichero
 
                 for (String s : sub2) {
                     Actor unActor = new Actor(s);
-                    Peli.añadirActorALista(unActor);
+                    unActor.anadirPeliculaAMapa(Peli);
+                    Peli.anadirActorAMapa(unActor);
+                    ListaActores.getMiListaActores().anadirActorALista(unActor);
+                    HashMap_Actores.getMiMapa().anadirEntrada(s,unActor);
                 }
 
-                Map.getMiMapa().anadirEntrada(Title,Peli);
+                HashMap_Peliculas.getMiMapa().anadirEntrada(Title,Peli);
             }
             entrada.close();
         }

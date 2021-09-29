@@ -1,7 +1,6 @@
 package org.eda.labo;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Pelicula
@@ -19,9 +18,9 @@ public class Pelicula
     }
 
     //Methods
-    public boolean mismoNombre(String pTitulo)
+    public String getNombre ()
     {
-        return Objects.equals(pTitulo, this.Titulo);
+        return this.Titulo;
     }
 
     public void incrementarRecaudacion()
@@ -33,7 +32,7 @@ public class Pelicula
         System.out.println("Esta pelicula a recudado "+Recaudacion+"$");
     }
 
-    public void añadirActorALista(Actor unActor)
+    public void anadirActorAMapa(Actor unActor)
     {
         if(!lista.contains(unActor))
         {
@@ -51,5 +50,4 @@ public class Pelicula
             System.out.println(actor.getNombre());
         }
     }
-
 }
