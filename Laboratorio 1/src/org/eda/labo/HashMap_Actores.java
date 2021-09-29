@@ -32,6 +32,13 @@ public class HashMap_Actores
 
     public void anadirActor(String key, Actor valor, Pelicula pPeli)
     {
+        if(key==null)
+        {
+            System.out.println("Introduce el nombre del Actor a añadir");
+            Scanner sn=new Scanner(System.in);
+            key=sn.nextLine();
+            valor=new Actor(key);
+        }
         if (!mapa.containsKey(key))
         {
             mapa.put(key, valor);
@@ -60,7 +67,6 @@ public class HashMap_Actores
             ArrayList<Pelicula> lista=unActor.getListaPelicula();
             for(Pelicula peli : lista)
             {
-                System.out.println("Actor "+unActor.getNombre()+" eliminado de "+peli.getNombre());
                 HashMap_Peliculas.getMiMapa().buscarPelicula(peli.getNombre()).eliminarActorDeLista(unActor);
             }
             mapa.remove(key);
@@ -79,7 +85,14 @@ public class HashMap_Actores
             Scanner sn=new Scanner(System.in);
             key = sn.nextLine();
         }
-        return mapa.get(key);
+        if (mapa.containsKey(key))
+        {
+            return mapa.get(key);
+        }
+        else {
+            System.out.println("No se ha encontrado Actor con ese nombre");
+            return null;
+        }
     }
 
     public void reset()

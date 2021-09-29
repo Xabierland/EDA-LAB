@@ -48,6 +48,7 @@ public class Pelicula
     {
         if(lista.contains(unActor))
         {
+            System.out.println("Actor "+unActor.getNombre()+" eliminado de "+getNombre());
             lista.remove(unActor);
         }
         else

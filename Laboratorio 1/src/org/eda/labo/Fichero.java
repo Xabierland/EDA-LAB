@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class Fichero
 {
-    private String Dir;
+    private final String Dir;
     private static Fichero miFichero=null;
 
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista.txt";
+        Dir="src/files/lista2.txt";
     }
 
     //Methods

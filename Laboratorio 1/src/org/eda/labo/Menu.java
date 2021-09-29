@@ -51,25 +51,28 @@ public class Menu
             switch (opcion)
             {
                 case 0:
+                    HM_Actor.reset();
+                    HM_Peli.reset();
                     datos.cargarLista();
                     break;
                 case 1:
-
+                    unActor=HM_Actor.buscarActor(null);
+                    if (unActor!=null) System.out.println(unActor.getNombre()+" encontrado");
                     break;
                 case 2:
-
+                    HM_Actor.anadirActor(null,null,null);
                     break;
                 case 3:
                     unActor= HM_Actor.buscarActor(null);
-                    unActor.imprimirLista();        //COMPROBACION
+                    if (unActor!=null) unActor.imprimirLista();        //COMPROBACION
                     break;
                 case 4:
                     unaPelicula=HM_Peli.buscarPelicula(null);
-                    unaPelicula.imprimirLista();   //COMPROBACION
+                    if (unaPelicula!=null) unaPelicula.imprimirLista();   //COMPROBACION
                     break;
                 case 5:
                     unaPelicula=HM_Peli.buscarPelicula(null);
-                    unaPelicula.incrementarRecaudacion();
+                    if (unaPelicula!=null) unaPelicula.incrementarRecaudacion();
                     break;
                 case 6:
                     HM_Actor.eliminarActor(null);
