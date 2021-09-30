@@ -72,9 +72,9 @@ public class Fichero
     {
         try
         {
-            FileWriter fichero = new FileWriter("src/files/lista_output");
-
-
+            FileWriter fichero = new FileWriter("src/files/lista_output.txt");
+            fichero.write(HashMap_Peliculas.getMiMapa().escribirContenido());
+            fichero.close();
         }
         catch (IOException e)
         {

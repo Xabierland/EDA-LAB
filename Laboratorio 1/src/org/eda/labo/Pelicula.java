@@ -91,6 +91,11 @@ public class Pelicula
         return esta;
     }
 
+    public ArrayList<Actor> getLista()
+    {
+        return lista;
+    }
+
     public void imprimirLista()
     {
         for (Actor actor : lista) {

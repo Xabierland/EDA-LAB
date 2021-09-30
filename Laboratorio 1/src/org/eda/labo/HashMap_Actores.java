@@ -104,6 +104,17 @@ public class HashMap_Actores
         }
     }
 
+    public String [] listaNombresActoresOrdenada()
+    {
+        String[] keys = mapa.keySet().toArray(new String[0]);
+        if(keys.length>0)
+            return StringQuickSort.getStringQuickSort().sort(keys);
+        else
+            return keys;
+    }
+
+
+
     public void reset()
     {
         mapa.clear();

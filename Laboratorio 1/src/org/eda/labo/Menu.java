@@ -78,8 +78,11 @@ public class Menu
                     HM_Actor.eliminarActor(null);
                     break;
                 case 7:
+                    datos.crearFichero();
+                    System.out.println("El contenido se ha escrito correctamente");
                     break;
                 case 8:
+                    for(String s:HM_Actor.listaNombresActoresOrdenada()){System.out.println(s);}
                     break;
                 case 9:
                     exit=true;
