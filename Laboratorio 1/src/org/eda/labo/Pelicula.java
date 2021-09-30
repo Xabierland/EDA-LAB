@@ -23,15 +23,27 @@ public class Pelicula
         return this.Titulo;
     }
 
-    public void incrementarRecaudacion()
+    /**
+     * Incrementa la recaudacion ligada a una pelicula
+     * @param pValor no puede ser negativo
+     */
+    public void incrementarRecaudacion(float pValor)
     {
+        if(pValor<0)
+        {
         System.out.println("\nIntroduce el valor de la recaudacion a aumentar");
         Scanner sn=new Scanner(System.in);
-        Float valor=sn.nextFloat();
-        Recaudacion+=valor;
+        pValor=sn.nextFloat();
+        }
+
+        Recaudacion+=pValor;
         System.out.println("Esta pelicula a recudado "+Recaudacion+"$");
     }
 
+    /**
+     * Si el actor no es encuentra en la lista lo añade
+     * @param unActor
+     */
     public void anadirActorALista(Actor unActor)
     {
         if(!lista.contains(unActor))
@@ -44,6 +56,10 @@ public class Pelicula
         }
     }
 
+    /**
+     * Busca en la lista de actores de la pelicula al actor recibido como parametro y lo elimina de la lista.
+     * @param unActor
+     */
     public void eliminarActorDeLista(Actor unActor)
     {
         if(lista.contains(unActor))

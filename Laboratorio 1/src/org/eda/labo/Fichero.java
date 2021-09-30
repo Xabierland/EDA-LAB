@@ -19,7 +19,7 @@ public class Fichero
 
     /**
      *
-     * @return Devuelve la unica instacia de Fichero
+     * @return Devuelve la unica instancia de la clase Fichero
      */
     public static Fichero getFichero()
     {
@@ -35,7 +35,7 @@ public class Fichero
      * Despues, usando regex separa las peliculas de la lista de actores para despues separar los
      * actores de uno en uno. Luego estos actores son añadidos a la lista de actores asociada a la pelicula de la linea
      */
-    public void cargarLista()
+    public void cargarFichero()
     {
         try
         {
@@ -64,6 +64,11 @@ public class Fichero
             entrada.close();
         }
         catch (IOException e) {e.printStackTrace();}
+    }
+
+    public void crearFichero()
+    {
+
     }
 
 }

@@ -53,7 +53,7 @@ public class Menu
                 case 0:
                     HM_Actor.reset();
                     HM_Peli.reset();
-                    datos.cargarLista();
+                    datos.cargarFichero();
                     break;
                 case 1:
                     unActor=HM_Actor.buscarActor(null);
@@ -72,7 +72,7 @@ public class Menu
                     break;
                 case 5:
                     unaPelicula=HM_Peli.buscarPelicula(null);
-                    if (unaPelicula!=null) unaPelicula.incrementarRecaudacion();
+                    if (unaPelicula!=null) unaPelicula.incrementarRecaudacion(-1);
                     break;
                 case 6:
                     HM_Actor.eliminarActor(null);
