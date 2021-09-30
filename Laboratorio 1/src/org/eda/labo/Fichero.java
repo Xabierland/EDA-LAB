@@ -73,7 +73,7 @@ public class Fichero
         try
         {
             FileWriter fichero = new FileWriter("src/files/lista_output");
-            
+
 
         }
         catch (IOException e)
