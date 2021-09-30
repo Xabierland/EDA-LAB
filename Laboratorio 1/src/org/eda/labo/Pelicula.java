@@ -1,6 +1,8 @@
 package org.eda.labo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Pelicula
@@ -46,7 +48,7 @@ public class Pelicula
      */
     public void anadirActorALista(Actor unActor)
     {
-        if(!lista.contains(unActor))
+        if(!actorEstaEnLista(unActor))
         {
             lista.add(unActor);
         }
@@ -62,7 +64,7 @@ public class Pelicula
      */
     public void eliminarActorDeLista(Actor unActor)
     {
-        if(lista.contains(unActor))
+        if(actorEstaEnLista(unActor))
         {
             System.out.println("Actor "+unActor.getNombre()+" eliminado de "+getNombre());
             lista.remove(unActor);
@@ -71,6 +73,22 @@ public class Pelicula
         {
             System.out.println("El actor no estaba en la lista");
         }
+    }
+
+    public boolean actorEstaEnLista(Actor pActor)
+    {
+        Iterator<Actor> itr=lista.iterator();
+        boolean esta=false;
+        Actor unActor=null;
+        while(itr.hasNext()&&!esta)
+        {
+            unActor=itr.next();
+            if(unActor.tienenMismoNombre(pActor))
+            {
+                esta=true;
+            }
+        }
+        return esta;
     }
 
     public void imprimirLista()

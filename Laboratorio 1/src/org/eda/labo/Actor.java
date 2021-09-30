@@ -1,6 +1,7 @@
 package org.eda.labo;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Actor
 {
@@ -18,6 +19,11 @@ public class Actor
     public String getNombre()
     {
         return nombre;
+    }
+
+    public boolean tienenMismoNombre(Actor pActor)
+    {
+        return Objects.equals(this.nombre, pActor.nombre);
     }
 
     public void anadirPeliculaALista(Pelicula unaPelicula)
