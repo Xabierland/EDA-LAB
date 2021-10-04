@@ -45,6 +45,8 @@ public class HashMap_Peliculas {
 
     public String escribirContenido()
     {
+        long statTime=System.nanoTime();
+
         String contenido="";
         String sub0;
         String sub1;
@@ -70,6 +72,9 @@ public class HashMap_Peliculas {
             sub0=sub0.concat("\n");
             contenido=contenido.concat(sub0);
         }
+        long endTime=System.nanoTime();
+        System.out.println(((endTime-statTime)/1000000)+" a tardado en ejecutarse");
+
         return contenido;
     }
 

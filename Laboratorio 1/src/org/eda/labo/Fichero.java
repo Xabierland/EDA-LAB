@@ -14,7 +14,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista2.txt";
+        Dir="src/files/lista.txt";
     }
 
     //Methods

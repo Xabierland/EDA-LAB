@@ -67,12 +67,32 @@ public class Pelicula
         if(actorEstaEnLista(unActor))
         {
             System.out.println("Actor "+unActor.getNombre()+" eliminado de "+getNombre());
-            lista.remove(unActor);
+            lista.remove(actorBuscarEnLista(unActor));
         }
         else
         {
             System.out.println("El actor no estaba en la lista");
         }
+    }
+
+    public Actor actorBuscarEnLista(Actor pActor)
+    {
+        Iterator<Actor> itr=lista.iterator();
+        boolean esta=false;
+        Actor unActor=null;
+        while(itr.hasNext()&&!esta)
+        {
+            unActor=itr.next();
+            if(unActor.tienenMismoNombre(pActor))
+            {
+                esta=true;
+            }
+        }
+        if (!esta)
+        {
+            unActor=null;
+        }
+        return unActor;
     }
 
     public boolean actorEstaEnLista(Actor pActor)
