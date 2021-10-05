@@ -14,7 +14,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista.txt";
+        Dir="src/files/lista2.txt";
     }
 
     //Methods
@@ -39,6 +39,7 @@ public class Fichero
      */
     public void cargarFichero()
     {
+        long statTime=System.nanoTime();
         try
         {
             Scanner entrada = new Scanner(new FileReader(Dir));
@@ -65,7 +66,12 @@ public class Fichero
             }
             entrada.close();
         }
-        catch (IOException e) {e.printStackTrace();}
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        long endTime=System.nanoTime();
+        System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
     }
 
     public void crearFichero()
@@ -73,7 +79,7 @@ public class Fichero
         try
         {
             FileWriter fichero = new FileWriter("src/files/lista_output.txt");
-            fichero.write(HashMap_Peliculas.getMiMapa().escribirContenido());
+            HashMap_Peliculas.getMiMapa().escribirContenido(fichero);
             fichero.close();
         }
         catch (IOException e)
