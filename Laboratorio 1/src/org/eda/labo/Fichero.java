@@ -14,7 +14,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista2.txt";
+        Dir="src/files/lista.txt";
     }
 
     //Methods
@@ -74,6 +74,9 @@ public class Fichero
         System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
     }
 
+    /**
+     * Crea el fichero y escribe el contenido de la clase HashMap Peliculas en el.
+     */
     public void crearFichero()
     {
         try

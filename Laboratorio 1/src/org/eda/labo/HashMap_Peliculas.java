@@ -19,6 +19,11 @@ public class HashMap_Peliculas {
     }
 
     //Methods
+
+    /**
+     *
+     * @return Devuelve la unica instancia del HashMap. Si no existe, la crea y la devuelve.
+     */
     public static HashMap_Peliculas getMiMapa()
     {
         if(miMapa==null)
@@ -28,12 +33,22 @@ public class HashMap_Peliculas {
         return miMapa;
     }
 
+    /**
+     * Añade una nueva pelicula al HashMap
+     * @param key el nombre por el que se buscara la pelicula
+     * @param valor el objeto pelicula que contendra su titulo, su recaudacion y una lista de actores que han trabajado en ella
+     */
     public void anadirEntrada(String key, Pelicula valor)
     {
         if(!mapa.containsKey(key))
             mapa.put(key, valor);
     }
 
+    /**
+     * Recibiendo el nombre de la pelicula como parametro la busca y devuelve su instancia.
+     * @param key el nombre de la pelicula
+     * @return una instancia de pelicula al que le corresponde la key.
+     */
     public Pelicula buscarPelicula(String key)
     {
         if(key==null) {
@@ -44,7 +59,11 @@ public class HashMap_Peliculas {
         return mapa.get(key);
     }
 
-
+    /**
+     * Escribe el contenido de todo el HashMap en un fichero.
+     * @param fichero Recibe un fichero en el que se escriben los datos del HashMap
+     * @throws IOException
+     */
     public void escribirContenido(FileWriter fichero) throws IOException {
         long statTime=System.nanoTime();
         String linea;
@@ -76,6 +95,9 @@ public class HashMap_Peliculas {
         System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
     }
 
+    /**
+     * Resetea la unica instancia del HashMap.
+     */
     public void reset()
     {
         mapa.clear();

@@ -63,8 +63,8 @@ public class HashMap_Actores
     }
 
     /**
-     *
-     * @param key
+     * Elimina todas las instancias de un actor tanto en el HashMap de Peliculas como en el propio HashMap de Actores
+     * @param key El nombre del actor. En caso de ser null se le pedira al usuario insertar uno por teclado.
      */
     public void eliminarActor(String key)
     {
@@ -91,6 +91,11 @@ public class HashMap_Actores
         }
     }
 
+    /**
+     *
+     * @param key El nombre del Actor. En caso de ser null se le pedira al usuario introducir uno por teclado
+     * @return En caso de encontrar al actor ligado a la key se le devolvera. Si no se devolvera el valor null.
+     */
     public Actor buscarActor(String key)
     {
         if(key==null)
@@ -109,6 +114,10 @@ public class HashMap_Actores
         }
     }
 
+    /**
+     * Obtiene todas las keys (nombres de actores) y los ordena usando QuickSort
+     * @return devuelve un array con todos los nombres de los actores o keys.
+     */
     private String [] getListaNombresActoresOrdenada()
     {
         String[] keys = mapa.keySet().toArray(new String[0]);
@@ -118,6 +127,11 @@ public class HashMap_Actores
             return keys;
     }
 
+    /**
+     * Utilizando el metodo getListaNombresActoresOrdenados usa el array de keys ordenadas para obtener a sus
+     * respectivos actores de forma ordenada
+     * @return devuelve un ArrayList con los Actores de forma ordenada.
+     */
     public ArrayList<Actor> getListaActoresOrdenada()
     {
         ArrayList<Actor> lista=new ArrayList<Actor>();
@@ -128,8 +142,9 @@ public class HashMap_Actores
         return lista;
     }
 
-
-
+    /**
+     * Borra todas las entradas del HashMap.
+     */
     public void reset()
     {
         mapa.clear();

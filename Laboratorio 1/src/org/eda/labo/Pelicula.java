@@ -20,6 +20,11 @@ public class Pelicula
     }
 
     //Methods
+
+    /**
+     *
+     * @return Devuelve el nombre de la pelicula
+     */
     public String getNombre ()
     {
         return this.Titulo;
@@ -44,7 +49,7 @@ public class Pelicula
 
     /**
      * Si el actor no es encuentra en la lista lo añade
-     * @param unActor
+     * @param unActor la instancia de un actor a añadir a la lista de la pelicula
      */
     public void anadirActorALista(Actor unActor)
     {
@@ -60,7 +65,7 @@ public class Pelicula
 
     /**
      * Busca en la lista de actores de la pelicula al actor recibido como parametro y lo elimina de la lista.
-     * @param unActor
+     * @param unActor la instancia de un Actor a eliminar de la lista de peliculas
      */
     public void eliminarActorDeLista(Actor unActor)
     {
@@ -75,6 +80,11 @@ public class Pelicula
         }
     }
 
+    /**
+     * Busca un actor en el ArrayList de la pelicula
+     * @param pActor recibe la instancia del actor a buscar en la lista y compara su nombre.
+     * @return Devuelve el actor con el mismo nombre de la lista.
+     */
     public Actor actorBuscarEnLista(Actor pActor)
     {
         Iterator<Actor> itr=lista.iterator();
@@ -88,13 +98,18 @@ public class Pelicula
                 esta=true;
             }
         }
-        if (!esta)
+        if(!esta)
         {
             unActor=null;
         }
         return unActor;
     }
 
+    /**
+     * Devuelve un booleano indicando si el actor esta en lista
+     * @param pActor la instancia de Actor a buscar
+     * @return un booleando que indica si el actor esta en lista (True) o no lo esta (False)
+     */
     public boolean actorEstaEnLista(Actor pActor)
     {
         Iterator<Actor> itr=lista.iterator();
@@ -111,11 +126,18 @@ public class Pelicula
         return esta;
     }
 
+    /**
+     * Devuelve la lista de Actores ligada a una pelicula
+     * @return La lista de actores ligada a la pelicula
+     */
     public ArrayList<Actor> getLista()
     {
         return lista;
     }
 
+    /**
+     * Imprime la lista de actores de la pelicula por consola
+     */
     public void imprimirLista()
     {
         for (Actor actor : lista) {
