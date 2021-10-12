@@ -33,6 +33,7 @@ public class Menu
 
         while(!exit)
         {
+            System.out.println("\n################################################");
             System.out.println("\t\t Menu Principal \n");
             System.out.println("Seleccione una de las siguientes opciones:\n");
             System.out.println("0. Cargar los datos");
@@ -82,7 +83,7 @@ public class Menu
                     System.out.println("El contenido se ha escrito correctamente");
                     break;
                 case 8:
-                    for(String s:HM_Actor.listaNombresActoresOrdenada()){System.out.println(s);}
+                    for(Actor s:HM_Actor.getListaActoresOrdenada()){System.out.println(s.getNombre());}
                     break;
                 case 9:
                     exit=true;

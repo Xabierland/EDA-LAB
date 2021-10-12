@@ -1,6 +1,7 @@
 package org.eda.labo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -61,6 +62,10 @@ public class HashMap_Actores
         }
     }
 
+    /**
+     *
+     * @param key
+     */
     public void eliminarActor(String key)
     {
         if(key==null)
@@ -104,13 +109,23 @@ public class HashMap_Actores
         }
     }
 
-    public String [] listaNombresActoresOrdenada()
+    private String [] getListaNombresActoresOrdenada()
     {
         String[] keys = mapa.keySet().toArray(new String[0]);
         if(keys.length>0)
             return StringQuickSort.getStringQuickSort().sort(keys);
         else
             return keys;
+    }
+
+    public ArrayList<Actor> getListaActoresOrdenada()
+    {
+        ArrayList<Actor> lista=new ArrayList<Actor>();
+        for(String nombre_actor : getListaNombresActoresOrdenada())
+        {
+             lista.add(HashMap_Actores.getMiMapa().buscarActor(nombre_actor));
+        }
+        return lista;
     }
 
 
