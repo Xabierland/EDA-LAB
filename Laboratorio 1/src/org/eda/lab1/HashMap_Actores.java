@@ -1,7 +1,6 @@
-package org.eda.labo;
+package org.eda.lab1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 

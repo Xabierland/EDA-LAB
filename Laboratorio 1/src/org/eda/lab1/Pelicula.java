@@ -1,8 +1,7 @@
-package org.eda.labo;
+package org.eda.lab1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Pelicula

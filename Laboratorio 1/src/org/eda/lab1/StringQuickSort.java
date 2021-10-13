@@ -1,4 +1,4 @@
-package org.eda.labo;
+package org.eda.lab1;
 
 public class StringQuickSort {
 

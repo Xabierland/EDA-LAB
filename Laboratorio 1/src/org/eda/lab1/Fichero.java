@@ -1,6 +1,5 @@
-package org.eda.labo;
+package org.eda.lab1;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +13,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="src/files/lista.txt";
+        Dir="Laboratorio 1/src/files/lista.txt";
     }
 
     //Methods
@@ -81,7 +80,7 @@ public class Fichero
     {
         try
         {
-            FileWriter fichero = new FileWriter("src/files/lista_output.txt");
+            FileWriter fichero = new FileWriter("Laboratorio 1/src/files/lista_output.txt");
             HashMap_Peliculas.getMiMapa().escribirContenido(fichero);
             fichero.close();
         }
