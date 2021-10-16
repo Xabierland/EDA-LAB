@@ -1,4 +1,4 @@
-package segundaFase;
+package org.eda.lab2;
 
 	public class Node<T> {
 		public T data; 			// dato del nodo

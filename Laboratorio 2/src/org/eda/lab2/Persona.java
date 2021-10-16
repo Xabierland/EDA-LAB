@@ -1,4 +1,4 @@
-package segundaFase;
+package org.eda.lab2;
 
 public class Persona implements Comparable<Persona> {
 	

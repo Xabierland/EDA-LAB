@@ -1,21 +1,24 @@
-package segundaFase;
+package org.eda.lab2;
 
 import java.util.Iterator;
 
 
 public class PruebaDoubleLinkedList {
 	
-	public static void visualizarNodos(UnorderedCircularLiDoublenkedList<Integer> l) {
+	public static void visualizarNodos(UnorderedCircularLiDoublenkedList<Integer> l)
+	{
 		Iterator<Integer> it = l.iterator();
 		System.out.println();
-		while (it.hasNext()) {
+		while (it.hasNext())
+		{
 			Integer num = it.next();
 			System.out.println(num);
 		}
 	}
 	
 	
-	public static void main(String[] args)  {
+	public static void main(String[] args)
+	{
 		
 		UnorderedCircularDoubleLinkedList<Integer> l = new UnorderedCircularDoubleLinkedList<Integer>();
 		l.addToRear(1);
@@ -39,5 +42,5 @@ public class PruebaDoubleLinkedList {
 		System.out.println("0? " + l.find(0));
 		System.out.println("7? " + l.find(7));
 		
-}
+	}
 }
