@@ -194,8 +194,25 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// an iterator, doesn't implement remove() since it's optional
 	private class ListIterator implements Iterator<T>
 	{
-		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		private Node<T>	actual=last.next;
+		@Override
+		public boolean hasNext() {
+			return actual!=last;
+		}
 
+		@Override
+		public T next() {
+			if(!hasNext())
+			{
+				throw new NoSuchElementException();
+			}
+			else
+			{
+				T data = actual.data;
+				actual=actual.next;
+				return data;
+			}
+		}
 	} // private class
 
 	public void visualizarNodos()
