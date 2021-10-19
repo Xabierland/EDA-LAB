@@ -4,43 +4,101 @@ import java.util.Iterator;
 
 
 public class PruebaDoubleLinkedList {
-	
-	public static void visualizarNodos(UnorderedDoubleLinkedList<Integer> l)
-	{
-		Iterator<Integer> it = l.iterator();
-		System.out.println();
-		while (it.hasNext())
-		{
-			Integer num = it.next();
-			System.out.println(num);
-		}
-	}
-	
-	
 	public static void main(String[] args)
 	{
-		
 		UnorderedDoubleLinkedList<Integer> l = new UnorderedDoubleLinkedList<>();
-		l.addToRear(1);
-		l.addToRear(3);
-		l.addToRear(6);
-		l.addToRear(7);
-		l.addToRear(9);
-		l.addToRear(0);
-		l.addToRear(20);
-		l.addToFront(8);
-		l.remove(7);
 
-		
-		System.out.print(" Lista ...............");
-		visualizarNodos(l);
-		System.out.println(" Num elementos: " + l.size());
-				
-		
-		System.out.println("Prueba Find ...............");
-		System.out.println("9? " + l.find(9));
-		System.out.println("0? " + l.find(0));
-		System.out.println("7? " + l.find(7));
-		
+		System.out.println("\nPrueba addToRear");
+		l.addToRear(4);
+		l.addToRear(5);
+		l.addToRear(6);
+
+		if(l.size()==3)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [4][5][6]");
+		}
+		else
+		{
+			System.out.println("Error en addToRear | Lista resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\nPrueba addToFront");
+		l.addToFront(3);
+		l.addToFront(2);
+		l.addToFront(1);
+
+		if(l.size()==6)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [1][2][3][4][5][6]");
+		}
+		else
+		{
+			System.out.print ("Error en addToFront | Lista resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\nPrueba addAfter");
+		l.addAfter(7,6);
+		l.addAfter(5,5);
+		l.addAfter(9,10);
+
+		if(l.size()==9)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [1][2][3][4][5][5][6][7][9]");
+		}
+		else
+		{
+			System.out.print("Error en addAfter | Nodo resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\nPrueba remove");
+		l.remove(9);
+		l.remove(5);
+
+		if(l.size()==7)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [1][2][3][4][5][6][7]");
+		}
+		else
+		{
+			System.out.print("Error en addAfter | Nodo resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\nPrueba removeLast");
+		l.removeLast();
+		l.removeLast();
+
+		if(l.size()==5)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [1][2][3][4][5]");
+		}
+		else
+		{
+			System.out.print("Error en addAfter | Nodo resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\nPrueba removeFirst");
+		l.removeFirst();
+		l.removeFirst();
+
+		if(l.size()==3)
+		{
+			System.out.print("La lista creada es: ");l.visualizarNodos();
+			System.out.println("La lista deveria ser: [3][4][5]");
+		}
+		else
+		{
+			System.out.print("Error en addAfter | Nodo resultado: ");l.visualizarNodos();
+		}
+
+		System.out.println("\n Set & Get description");
+		l.setDescr("Lista de numeros");
+		System.out.println("La descripcion es: "+l.getDescr());
+		System.out.println("La descripcion deveria ser: Lista de numeros");
+
 	}
 }

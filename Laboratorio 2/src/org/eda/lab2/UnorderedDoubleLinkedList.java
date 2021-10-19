@@ -6,11 +6,21 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	{
 		// a�ade un elemento al comienzo
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-		Node<T> nuevo=new Node<>(elem);
-		nuevo.prev=last;
-		nuevo.next=last.next;
-		last.next.prev=nuevo;
-		last.next=nuevo;
+		Node<T> nuevo = new Node<>(elem);
+		if(last==null)
+		{
+			last=nuevo;
+			last.next=last;
+			last.prev=last;
+		}
+		else
+		{
+			nuevo.prev = last;
+			nuevo.next = last.next;
+			last.next.prev = nuevo;
+			last.next = nuevo;
+		}
+		count++;
 
 	}
 
@@ -26,13 +36,39 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 	{
 		// A�ade elem detr�s de otro elemento concreto, target,  que ya se encuentra en la lista
 		// �COMPLETAR OPCIONAL!
-		if(isEmpty() || !contains(target))
+		count++;
+		if(last==null)
 		{
-
+			last=new Node<>(elem);
+			last.next=last;
+			last.prev=last;
+		}
+		else if(!contains(target))
+		{
+			Node<T> primero=last.next;
+			last.next=new Node<>(elem);
+			last.next.next=primero;
+			last.next.prev=last;
+			primero.prev=last.next;
+			last=last.next;
 		}
 		else
 		{
-
+			Node<T> actual=last.next;
+			Node<T> previo=last.next;
+			while(!previo.data.equals(target))
+			{
+				previo=actual;
+				actual=actual.next;
+			}
+			previo.next=new Node<>(elem);
+			previo.next.next=actual;
+			previo.next.prev=previo;
+			actual.prev=previo.next;
+			if(previo.equals(last))
+			{
+				last=last.next;
+			}
 		}
 	}
 

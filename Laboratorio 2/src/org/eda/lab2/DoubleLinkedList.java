@@ -36,6 +36,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> actual=last.next;
 		last.next.next.prev=last;
 		last.next=actual.next;
+		count--;
 		return actual.data;
 	}
 
@@ -46,6 +47,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		last.prev.next=last.next;
 		last.next.prev=last.prev;
+		last=last.prev;
+		count--;
 		return last.data;
 	}
 
@@ -85,6 +88,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			{
 				actual.prev.next = actual.next;
 				actual.next.prev = actual.prev;
+				count--;
 				return actual.data;
 			}
 		}
@@ -195,9 +199,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	private class ListIterator implements Iterator<T>
 	{
 		private Node<T>	actual=last.next;
+		private Node<T> previo=last.next;
+
 		@Override
-		public boolean hasNext() {
-			return actual!=last;
+		public boolean hasNext()
+		{
+			return previo != last;
 		}
 
 		@Override
@@ -208,7 +215,8 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}
 			else
 			{
-				T data = actual.data;
+				previo=actual;
+				T data = previo.data;
 				actual=actual.next;
 				return data;
 			}
@@ -217,7 +225,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public void visualizarNodos()
 	{
-		System.out.println(this.toString());
+		System.out.print(this.toString());
 	}
 
 	@Override
@@ -228,9 +236,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		while (it.hasNext())
 		{
 			T elem = it.next();
-			result.append("[").append(elem.toString()).append("] \n");
+			result.append("[").append(elem.toString()).append("]");
 		}
-		return "DoubleLinkedList " + result + "]";
+		return result + "\n";
 	}
 
 }
