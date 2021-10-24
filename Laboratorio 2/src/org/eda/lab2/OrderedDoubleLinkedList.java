@@ -15,10 +15,13 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 			Node<T> actual=last.next;
 			Node<T> previo=last.next;
 
+			actual.data
+
 		}
 
 	}
-	public void merge(DoubleLinkedList<T> lista){
+	public void merge(DoubleLinkedList<T> lista)
+	{
 
 
 	}
