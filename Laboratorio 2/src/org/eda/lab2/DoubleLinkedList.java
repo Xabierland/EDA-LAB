@@ -3,7 +3,7 @@ package org.eda.lab2;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class DoubleLinkedList<T> implements ListADT<T> {
+public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	// Atributos
 	protected Node<T> last;  // apuntador al �ltimo

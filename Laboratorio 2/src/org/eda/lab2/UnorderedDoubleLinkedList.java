@@ -1,6 +1,6 @@
 package org.eda.lab2;
 
-public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements UnorderedListADT<T> {
+public class UnorderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLinkedList<T> implements UnorderedListADT<T> {
 	
 	public void addToFront(T elem)
 	{
