@@ -14,24 +14,37 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 		else
 		{
 			Node<T> actual=last.next;
-			Node<T> previo=last.next;
-			boolean enc=false;
-
-			while (previo!=last && !enc)
+			Node<T> previo=last;
+			if(previo.data.compareTo(elem)<0)
 			{
-				previo=actual;
-				actual=actual.next;
-
-				if(previo.data.compareTo(elem)>0)
-				{
-					enc=true;
-				}
+				previo.next=new Node<>(elem);
+				previo.next.prev=previo;
+				previo.next.next=actual;
+				actual.prev=previo.next;
+				last=previo.next;
+				count++;
 			}
-			previo.next=new Node<>(elem);
-			previo.next.prev=previo;
-			previo.next.next=actual;
-			actual.prev=previo.next;
-			count++;
+			else
+			{
+				boolean enc=false;
+				while (!enc)
+				{
+					if(actual.data.compareTo(elem)>0)
+					{
+						enc=true;
+					}
+					else
+					{
+						previo=actual;
+						actual=actual.next;
+					}
+				}
+				previo.next=new Node<>(elem);
+				previo.next.next=actual;
+				previo.next.prev=previo;
+				actual.prev=previo.next;
+				count++;
+			}
 		}
 
 	}
