@@ -95,54 +95,10 @@ public class PruebaDoubleLinkedList {
 			System.out.print("Error en removeFirst | Nodo resultado: ");l.visualizarNodos();
 		}
 
-		System.out.println("\n Set & Get description");
+		System.out.println("\nPrueba Set & Get description");
 		l.setDescr("Lista de numeros");
 		System.out.println("La descripcion es: "+l.getDescr());
 		System.out.println("La descripcion deveria ser: Lista de numeros");
-
-		System.out.println("\nPrueba contains");
-
-		if(l.size()==3)
-		{
-			l.visualizarNodos();
-			if(l.contains(1))
-			{
-				System.out.println("Error");
-			}
-			else
-			{
-				System.out.println("No encontrado [1]");
-			}
-			if(l.contains(3))
-			{
-				System.out.println("Encontrado [3]");
-			}
-			else
-			{
-				System.out.println("Error");
-			}
-			if(l.contains(5))
-			{
-				System.out.println("Encontrado [5]");
-			}
-			else
-			{
-				System.out.println("Error");
-			}
-			if(l.contains(6))
-			{
-				System.out.println("Error");
-			}
-			else
-			{
-				System.out.println("No encontrado [6]");
-			}
-
-		}
-		else
-		{
-			System.out.print("Error en find | Nodo resultado: ");l.visualizarNodos();
-		}
 
 		System.out.println("\nPrueba contains");
 
