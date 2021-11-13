@@ -32,31 +32,45 @@ public class HashMap_Peliculas {
         return miMapa;
     }
 
-    /**
-     * Añade una nueva pelicula al HashMap
-     * @param key el nombre por el que se buscara la pelicula
-     * @param valor el objeto pelicula que contendra su titulo, su recaudacion y una lista de actores que han trabajado en ella
-     */
-    public void anadirEntrada(String key, Pelicula valor)
+    public Pelicula add(String pTitulo)
     {
-        if(!mapa.containsKey(key))
-            mapa.put(key, valor);
+        if(pTitulo==null)
+        {
+            System.out.println("Introduce el nombre del pelicula a añadir");
+            Scanner sn=new Scanner(System.in);
+            pTitulo=sn.nextLine();
+        }
+
+        if(!mapa.containsKey(pTitulo)) {
+            Pelicula unaPeli=new Pelicula(pTitulo);
+            mapa.put(pTitulo, unaPeli);
+        }
+
+        return mapa.get(pTitulo);
     }
 
-    /**
-     * Recibiendo el nombre de la pelicula como parametro la busca y devuelve su instancia.
-     * @param key el nombre de la pelicula
-     * @return una instancia de pelicula al que le corresponde la key.
-     */
-    public Pelicula buscarPelicula(String key)
+    public void remove(String pTitulo)
     {
-        if(key==null) {
-            System.out.println("\nIntroduce el nombre de la pelicula");
-            Scanner sn = new Scanner(System.in);
-            key = sn.nextLine();
+        if(pTitulo==null)
+        {
+            System.out.println("Introduce el nombre del pelicula a borrar");
+            Scanner sn=new Scanner(System.in);
+            pTitulo=sn.nextLine();
         }
-        return mapa.get(key);
+        mapa.remove(pTitulo);
     }
+
+    public Pelicula get(String pTitulo)
+    {
+        if(pTitulo==null)
+        {
+            System.out.println("Introduce el nombre del pelicula a buscar");
+            Scanner sn=new Scanner(System.in);
+            pTitulo=sn.nextLine();
+        }
+        return mapa.getOrDefault(pTitulo, null);
+    }
+
 
     /**
      * Escribe el contenido de todo el HashMap en un fichero.
@@ -67,14 +81,15 @@ public class HashMap_Peliculas {
         long statTime=System.nanoTime();
         String linea;
         String titulo_pelicula;
-        for(Map.Entry<String, Pelicula> entry :mapa.entrySet())
+        for(Map.Entry<String, Pelicula> entry :mapa.entrySet()) //OBTENGO CADA ENTRADA DEL HASHMAP
         {
             boolean primero=true;           //Indica que es el primer actor de la lista de la pelicula
             String lista_actores="";                 //Aqui se guardan la lista de actores separada
             String Titulo = entry.getKey(); //El titulo de la pelicula
             titulo_pelicula=Titulo.concat(" --->>> "); //Se pone el separador del titulo
-            for(Actor a : entry.getValue().getLista())
+            for(String s : entry.getValue().getListaActores())
             {
+                Actor a=HashMap_Actores.getMiMapa().get(s);
                 if(primero)
                 {
                     primero=false;

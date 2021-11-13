@@ -57,26 +57,26 @@ public class Menu
                     datos.cargarFichero();
                     break;
                 case 1:
-                    unActor=HM_Actor.buscarActor(null);
+                    unActor=HM_Actor.get(null);
                     if (unActor!=null) System.out.println(unActor.getNombre()+" encontrado");
                     break;
                 case 2:
-                    HM_Actor.anadirActor(null,null,null);
+                    HM_Actor.add(null);
                     break;
                 case 3:
-                    unActor= HM_Actor.buscarActor(null);
+                    unActor= HM_Actor.get(null);
                     if (unActor!=null) unActor.imprimirLista();        //COMPROBACION
                     break;
                 case 4:
-                    unaPelicula=HM_Peli.buscarPelicula(null);
+                    unaPelicula=HM_Peli.get(null);
                     if (unaPelicula!=null) unaPelicula.imprimirLista();   //COMPROBACION
                     break;
                 case 5:
-                    unaPelicula=HM_Peli.buscarPelicula(null);
-                    if (unaPelicula!=null) unaPelicula.incrementarRecaudacion(-1);
+                    unaPelicula=HM_Peli.get(null);
+                    if (unaPelicula!=null) unaPelicula.incrRecaudacion(-1);
                     break;
                 case 6:
-                    HM_Actor.eliminarActor(null);
+                    HM_Actor.remove(null);
                     break;
                 case 7:
                     datos.crearFichero();

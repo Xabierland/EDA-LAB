@@ -1,15 +1,13 @@
 package org.eda.lab1;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Pelicula
 {
     //Attributes
     private String Titulo;
     private float Recaudacion;
-    private ArrayList<Actor> lista = new ArrayList<Actor>();
+    private HashSet<String> listaActores = new HashSet<>();
 
     //Constructor
     public Pelicula(String pTitulo)
@@ -24,7 +22,7 @@ public class Pelicula
      *
      * @return Devuelve el nombre de la pelicula
      */
-    public String getNombre ()
+    public String getNombre()
     {
         return this.Titulo;
     }
@@ -33,7 +31,7 @@ public class Pelicula
      * Incrementa la recaudacion ligada a una pelicula
      * @param pValor no puede ser negativo
      */
-    public void incrementarRecaudacion(float pValor)
+    public void incrRecaudacion(float pValor)
     {
         if(pValor<0)
         {
@@ -46,101 +44,31 @@ public class Pelicula
         System.out.println("Esta pelicula a recudado "+Recaudacion+"$");
     }
 
-    /**
-     * Si el actor no es encuentra en la lista lo añade
-     * @param unActor la instancia de un actor a añadir a la lista de la pelicula
-     */
-    public void anadirActorALista(Actor unActor)
+    public void addActor(String pNombre)
     {
-        if(!actorEstaEnLista(unActor))
-        {
-            lista.add(unActor);
-        }
-        else
-        {
-            System.out.println("El actor ya esta en la lista");
-        }
+        listaActores.add(pNombre);
     }
 
-    /**
-     * Busca en la lista de actores de la pelicula al actor recibido como parametro y lo elimina de la lista.
-     * @param unActor la instancia de un Actor a eliminar de la lista de peliculas
-     */
-    public void eliminarActorDeLista(Actor unActor)
+    public void removeActor(String pNombre)
     {
-        if(actorEstaEnLista(unActor))
-        {
-            System.out.println("Actor "+unActor.getNombre()+" eliminado de "+getNombre());
-            lista.remove(actorBuscarEnLista(unActor));
-        }
-        else
-        {
-            System.out.println("El actor no estaba en la lista");
-        }
+        listaActores.remove(pNombre);
     }
 
-    /**
-     * Busca un actor en el ArrayList de la pelicula
-     * @param pActor recibe la instancia del actor a buscar en la lista y compara su nombre.
-     * @return Devuelve el actor con el mismo nombre de la lista.
-     */
-    public Actor actorBuscarEnLista(Actor pActor)
+    public Actor getActor(String pNombre)
     {
-        Iterator<Actor> itr=lista.iterator();
-        boolean esta=false;
-        Actor unActor=null;
-        while(itr.hasNext()&&!esta)
-        {
-            unActor=itr.next();
-            if(unActor.tienenMismoNombre(pActor))
-            {
-                esta=true;
-            }
-        }
-        if(!esta)
-        {
-            unActor=null;
-        }
-        return unActor;
+        return HashMap_Actores.getMiMapa().get(pNombre);
     }
 
-    /**
-     * Devuelve un booleano indicando si el actor esta en lista
-     * @param pActor la instancia de Actor a buscar
-     * @return un booleando que indica si el actor esta en lista (True) o no lo esta (False)
-     */
-    public boolean actorEstaEnLista(Actor pActor)
+    public HashSet<String> getListaActores()
     {
-        Iterator<Actor> itr=lista.iterator();
-        boolean esta=false;
-        Actor unActor=null;
-        while(itr.hasNext()&&!esta)
-        {
-            unActor=itr.next();
-            if(unActor.tienenMismoNombre(pActor))
-            {
-                esta=true;
-            }
-        }
-        return esta;
+        return listaActores;
     }
-
-    /**
-     * Devuelve la lista de Actores ligada a una pelicula
-     * @return La lista de actores ligada a la pelicula
-     */
-    public ArrayList<Actor> getLista()
-    {
-        return lista;
-    }
-
+    
     /**
      * Imprime la lista de actores de la pelicula por consola
      */
     public void imprimirLista()
     {
-        for (Actor actor : lista) {
-            System.out.println(actor.getNombre());
-        }
+        listaActores.forEach(System.out::println);
     }
 }

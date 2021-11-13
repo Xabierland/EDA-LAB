@@ -43,6 +43,8 @@ public class Fichero
         {
             Scanner entrada = new Scanner(new FileReader(Dir));
             String linea;
+            HashMap_Peliculas HM_Peli = HashMap_Peliculas.getMiMapa();
+            HashMap_Actores HM_Actor = HashMap_Actores.getMiMapa();
             while (entrada.hasNext())
             {
                 linea=entrada.nextLine();
@@ -51,17 +53,14 @@ public class Fichero
                 String [] sub2 = sub1[1].split(" #####"+"\\s+");
 
                 String Title=sub1[0];
-                Pelicula Peli=new Pelicula(Title);
+                Pelicula Peli=HM_Peli.add(Title);
 
-                for (String s : sub2) {
-                    Actor unActor = new Actor(s);
-                    unActor.anadirPeliculaALista(Peli);
-                    Peli.anadirActorALista(unActor);
-
-                    HashMap_Actores.getMiMapa().anadirActor(s,unActor,Peli);
+                for (String s : sub2)
+                {
+                    Actor unActor=HM_Actor.add(s);
+                    unActor.addPelicula(Title);
+                    Peli.addActor(s);
                 }
-
-                HashMap_Peliculas.getMiMapa().anadirEntrada(Title,Peli);
             }
             entrada.close();
         }

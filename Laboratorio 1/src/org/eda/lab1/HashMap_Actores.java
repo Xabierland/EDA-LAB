@@ -2,6 +2,7 @@ package org.eda.lab1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class HashMap_Actores
@@ -31,86 +32,52 @@ public class HashMap_Actores
         return miMapa;
     }
 
-    /**
-     * En caso de no existir ninguna entrada con la misma Key la crea y guarda el valor junto a ella.
-     * En caso de que ya existiera actualiza el valor añadiendo la nueva Pelicula en la que aparece y lo vuelve a guardar
-     * @param key un string al que se ligara un valor. Si recibe el valor null se pedira por teclado la key
-     * @param valor un objeto de la clase Actor. No puede ser null a menos que la Key tambien lo sea.
-     * @param pPeli en caso de que el HashMap ya contuviese la key dada se usara este valor para actualizar el valor ligada a ella
-     */
-    public void anadirActor(String key, Actor valor, Pelicula pPeli)
+    public Actor add(String pNombre)
     {
-        if(key==null)
+        if(pNombre==null)
         {
-            System.out.println("Introduce el nombre del Actor a añadir");
+            System.out.println("Introduce el nombre del actor a añadir");
             Scanner sn=new Scanner(System.in);
-            key=sn.nextLine();
-            if(valor==null)
-                valor=new Actor(key);
+            pNombre=sn.nextLine();
         }
-        if (!mapa.containsKey(key))
-        {
-            mapa.put(key, valor);
+        if(!mapa.containsKey(pNombre)) {
+            Actor unActor = new Actor(pNombre);
+            mapa.put(pNombre, unActor);
         }
-        else
-        {
-            Actor unActor=mapa.get(key);
-            unActor.anadirPeliculaALista(pPeli);
-            mapa.remove(key);
-            mapa.put(key,unActor);
-        }
+
+        return mapa.get(pNombre);
     }
 
-    /**
-     * Elimina todas las instancias de un actor tanto en el HashMap de Peliculas como en el propio HashMap de Actores
-     * @param key El nombre del actor. En caso de ser null se le pedira al usuario insertar uno por teclado.
-     */
-    public void eliminarActor(String key)
+    public void remove(String pNombre)
     {
-        if(key==null)
+        if(pNombre==null)
         {
-            System.out.println("Cual es el nombre del actor a eliminar");
+            System.out.println("Introduce el nombre del actor a borrar");
             Scanner sn=new Scanner(System.in);
-            key=sn.nextLine();
+            pNombre=sn.nextLine();
         }
-
-        Actor unActor=buscarActor(key);
-        if (unActor!=null)
+        if(mapa.containsKey(pNombre))
         {
-            ArrayList<Pelicula> lista=unActor.getListaPelicula();
-            for(Pelicula peli : lista)
+            Actor unActor=get(pNombre);
+            String finalPNombre = pNombre;
+            unActor.getListaPelicula().forEach((p)->
             {
-                HashMap_Peliculas.getMiMapa().buscarPelicula(peli.getNombre()).eliminarActorDeLista(unActor);
-            }
-            mapa.remove(key);
+                HashMap_Peliculas.getMiMapa().get(p).removeActor(finalPNombre);
+            });
+            mapa.remove(pNombre);
         }
-        else
-        {
-            System.out.println("No se ha encontrado actor con ese nombre");
-        }
+
     }
 
-    /**
-     *
-     * @param key El nombre del Actor. En caso de ser null se le pedira al usuario introducir uno por teclado
-     * @return En caso de encontrar al actor ligado a la key se le devolvera. Si no se devolvera el valor null.
-     */
-    public Actor buscarActor(String key)
+    public Actor get(String pNombre)
     {
-        if(key==null)
+        if(pNombre==null)
         {
-            System.out.println("\nIntroduce el nombre del actor");
+            System.out.println("Introduce el nombre del actor a buscar");
             Scanner sn=new Scanner(System.in);
-            key = sn.nextLine();
+            pNombre=sn.nextLine();
         }
-        if (mapa.containsKey(key))
-        {
-            return mapa.get(key);
-        }
-        else {
-            System.out.println("No se ha encontrado Actor con ese nombre");
-            return null;
-        }
+        return mapa.getOrDefault(pNombre, null);
     }
 
     /**
@@ -136,7 +103,7 @@ public class HashMap_Actores
         ArrayList<Actor> lista=new ArrayList<Actor>();
         for(String nombre_actor : getListaNombresActoresOrdenada())
         {
-             lista.add(HashMap_Actores.getMiMapa().buscarActor(nombre_actor));
+             lista.add(HashMap_Actores.getMiMapa().get(nombre_actor));
         }
         return lista;
     }
