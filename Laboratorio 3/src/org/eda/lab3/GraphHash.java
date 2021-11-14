@@ -1,7 +1,6 @@
 package org.eda.lab3;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class GraphHash
 {
@@ -40,23 +39,82 @@ public class GraphHash
 
     public void add(String pClave, String pDato)
     {
+        ArrayList<String> lDatos;
         if(g.containsKey(pClave))
         {
-            ArrayList<String> lDatos = g.get(pClave);
-            lDatos.add(pDato);
-            g.put(pClave, lDatos);
+            lDatos = g.get(pClave);
         }
         else
         {
-            ArrayList<String> lDatos = new ArrayList<>();
-            lDatos.add(pDato);
-            g.put(pClave,lDatos);
+            lDatos = new ArrayList<>();
         }
+        if(pDato.compareTo("")!=0)
+            lDatos.add(pDato);
+        g.put(pClave, lDatos);
 
     }
 
     public boolean estanConectados(String a1, String a2)
     {
-        return true;
+        if(a1==null&&a2==null)
+        {
+            System.out.println("Introduce el nombre del actor");
+            Scanner sn=new Scanner(System.in);
+            a1=sn.nextLine();
+            a2=sn.nextLine();
+        }
+        if(!g.containsKey(a1))
+        {
+            System.out.println(a1+" no esta en la base de datos");
+            return false;
+        }
+        else
+        {
+            if(!g.containsKey(a2))
+            {
+                System.out.println(a2+" no esta en la base de datos");
+                return false;
+            }
+            else
+            {
+                long statTime=System.nanoTime();
+                if(g.get(a1).isEmpty() || g.get(a2).isEmpty())
+                {
+                    long endTime=System.nanoTime();
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    return false;
+                }
+                else if(!g.get(a1).contains(a2))
+                {
+                    Queue<String> sinExplorar = new LinkedList<>(g.get(a1));
+                    HashSet<String> Explorados = new HashSet<>();
+                    boolean enc = false;
+                    Explorados.add(a1);
+                    while (!sinExplorar.isEmpty() && !enc) {
+                        String unActor = sinExplorar.remove();
+                        Explorados.add(unActor);
+                        if (unActor.compareTo(a2) == 0) {
+                            enc = true;
+                        } else {
+                            g.get(unActor).forEach(s ->
+                            {
+                                if (!Explorados.contains(s) && !sinExplorar.contains(s)) {
+                                    sinExplorar.add(s);
+                                }
+                            });
+                        }
+                    }
+                    long endTime=System.nanoTime();
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    return enc;
+                }
+                else
+                {
+                    long endTime=System.nanoTime();
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    return true;
+                }
+            }
+        }
     }
 }

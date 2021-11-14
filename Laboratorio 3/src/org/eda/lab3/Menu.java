@@ -43,7 +43,10 @@ public class Menu {
                     GH.crearGrafo();
                     break;
                 case 1 :
-                    GH.estanConectados(null, null);
+                    if(GH.estanConectados(null,null))
+                        System.out.print("SI estan conectados");
+                    else
+                        System.out.print("NO estan conectados");
                     break;
                 case 8 :
                     GH.print();

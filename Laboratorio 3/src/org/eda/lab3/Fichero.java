@@ -43,6 +43,8 @@ public class Fichero
                     for (String value : sub2) {
                         if (s.compareTo(value) != 0)
                             GraphHash.getGraphHash().add(s, value);
+                        else
+                            GraphHash.getGraphHash().add(s,"");
                     }
                 }
             }
