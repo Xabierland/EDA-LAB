@@ -65,7 +65,7 @@ public class Pelicula
     }
     
     /**
-     * Imprime la lista de actores de la pelicula por consola
+     * Imprime la lista.txt de actores de la pelicula por consola
      */
     public void imprimirLista()
     {

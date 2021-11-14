@@ -83,8 +83,8 @@ public class HashMap_Peliculas {
         String titulo_pelicula;
         for(Map.Entry<String, Pelicula> entry :mapa.entrySet()) //OBTENGO CADA ENTRADA DEL HASHMAP
         {
-            boolean primero=true;           //Indica que es el primer actor de la lista de la pelicula
-            String lista_actores="";                 //Aqui se guardan la lista de actores separada
+            boolean primero=true;           //Indica que es el primer actor de la lista.txt de la pelicula
+            String lista_actores="";                 //Aqui se guardan la lista.txt de actores separada
             String Titulo = entry.getKey(); //El titulo de la pelicula
             titulo_pelicula=Titulo.concat(" --->>> "); //Se pone el separador del titulo
             for(String s : entry.getValue().getListaActores())

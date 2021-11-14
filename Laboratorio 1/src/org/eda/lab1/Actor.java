@@ -39,8 +39,8 @@ public class Actor
 
 
     /**
-     * Devuelve la lista de peliculas en las que ha trabajado un actor
-     * @return Devuelve la lista de peliculas en las que ha trabajado un actor
+     * Devuelve la lista.txt de peliculas en las que ha trabajado un actor
+     * @return Devuelve la lista.txt de peliculas en las que ha trabajado un actor
      */
     public HashSet<String> getListaPelicula()
     {
@@ -48,7 +48,7 @@ public class Actor
     }
 
     /**
-     * Recorre la lista de peliculas y la imprime por pantalla.
+     * Recorre la lista.txt de peliculas y la imprime por pantalla.
      */
     public void imprimirLista()
     {

@@ -15,8 +15,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==3)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [4][5][6]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [4][5][6]");
 		}
 		else
 		{
@@ -30,8 +30,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==6)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [1][2][3][4][5][6]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [1][2][3][4][5][6]");
 		}
 		else
 		{
@@ -45,8 +45,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==9)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [1][2][3][4][5][5][6][7][9]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [1][2][3][4][5][5][6][7][9]");
 		}
 		else
 		{
@@ -59,8 +59,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==7)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [1][2][3][4][5][6][7]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [1][2][3][4][5][6][7]");
 		}
 		else
 		{
@@ -73,8 +73,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==5)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [1][2][3][4][5]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [1][2][3][4][5]");
 		}
 		else
 		{
@@ -87,8 +87,8 @@ public class PruebaDoubleLinkedList {
 
 		if(l.size()==3)
 		{
-			System.out.print("La lista creada es: ");l.visualizarNodos();
-			System.out.println("La lista deveria ser: [3][4][5]");
+			System.out.print("La lista.txt creada es: ");l.visualizarNodos();
+			System.out.println("La lista.txt deveria ser: [3][4][5]");
 		}
 		else
 		{

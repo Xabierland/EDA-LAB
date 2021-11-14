@@ -13,7 +13,7 @@ public class Fichero
     //Constructor
     private Fichero()
     {
-        Dir="Laboratorio 1/src/files/lista.txt";
+        Dir="Laboratorio 1/src/files/lista.txt.txt";
     }
 
     //Methods
@@ -33,8 +33,8 @@ public class Fichero
 
     /*
      * Lee el documento que se encuentra en la direccion Dir y lo separa por lineas.
-     * Despues, usando regex separa las peliculas de la lista de actores para despues separar los
-     * actores de uno en uno. Luego estos actores son añadidos a la lista de actores asociada a la pelicula de la linea
+     * Despues, usando regex separa las peliculas de la lista.txt de actores para despues separar los
+     * actores de uno en uno. Luego estos actores son añadidos a la lista.txt de actores asociada a la pelicula de la linea
      */
     public void cargarFichero()
     {

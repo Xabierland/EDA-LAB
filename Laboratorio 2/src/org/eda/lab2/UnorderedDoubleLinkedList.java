@@ -34,7 +34,7 @@ public class UnorderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLi
 	
 	public void addAfter(T elem, T target)
 	{
-		// A�ade elem detr�s de otro elemento concreto, target,  que ya se encuentra en la lista
+		// A�ade elem detr�s de otro elemento concreto, target,  que ya se encuentra en la lista.txt
 		// �COMPLETAR OPCIONAL!
 		count++;
 		if(last==null)

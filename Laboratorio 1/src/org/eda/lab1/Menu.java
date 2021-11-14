@@ -44,7 +44,7 @@ public class Menu
             System.out.println("5. Incrementar la recaudacion de una pelicula");
             System.out.println("6. Eliminar un actor/actriz");
             System.out.println("7. Guardar los datos en un fichero");
-            System.out.println("8. Obtener lista ordenada de actores");
+            System.out.println("8. Obtener lista.txt ordenada de actores");
             System.out.println("9. Finalizar Programa");
             System.out.print("---> ");
             opcion=sn.nextInt();

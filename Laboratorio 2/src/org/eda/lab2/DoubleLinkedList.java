@@ -30,7 +30,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T removeFirst()
 	{
-	// Elimina el primer elemento de la lista
+	// Elimina el primer elemento de la lista.txt
         // Precondici�n: 
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		Node<T> actual=last.next;
@@ -42,7 +42,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T removeLast()
 	{
-		// Elimina el �ltimo elemento de la lista
+		// Elimina el �ltimo elemento de la lista.txt
 		// Precondici�n:
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		last.prev.next=last.next;
@@ -54,7 +54,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T remove(T elem)
 	{
-		//Elimina un elemento concreto de la lista
+		//Elimina un elemento concreto de la lista.txt
 		Node<T> actual=last.next;
 		boolean enc=false;
 		if(actual.data.equals(elem))
@@ -96,7 +96,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T first()
 	{
-		//Da acceso al primer elemento de la lista
+		//Da acceso al primer elemento de la lista.txt
 		if (isEmpty())
 			return null;
 		else return last.next.data;
@@ -104,14 +104,14 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T last()
 	{
-		//Da acceso al �ltimo elemento de la lista
+		//Da acceso al �ltimo elemento de la lista.txt
 		if (isEmpty())
 			return null;
 		else return last.data;
 	}
 
 	public boolean contains(T elem) {
-		//Determina si la lista contiene un elemento concreto
+		//Determina si la lista.txt contiene un elemento concreto
 		if (isEmpty())
 		{
 			return false;
@@ -141,7 +141,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 
 	public T find(T elem)
 	{
-		//Determina si la lista contiene un elemento concreto, y develve su referencia, null en caso de que no est�
+		//Determina si la lista.txt contiene un elemento concreto, y develve su referencia, null en caso de que no est�
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		if (isEmpty())
 		{
@@ -178,13 +178,13 @@ public class DoubleLinkedList<T extends Comparable<T>> implements ListADT<T> {
 	}
 
 	public boolean isEmpty() 
-	//Determina si la lista est� vac�a
+	//Determina si la lista.txt est� vac�a
 	{
 		return last == null;
 	}
 	
 	public int size() 
-	//Determina el n�mero de elementos de la lista
+	//Determina el n�mero de elementos de la lista.txt
 	{
 		return count;
 	}
