@@ -33,6 +33,7 @@ public class Menu {
             System.out.println("Seleccione una de las siguientes opciones:\n");
             System.out.println("0. Cargar los datos");
             System.out.println("1. Comprobar Conexion");
+            System.out.println("2. Lista de conexion");
             System.out.println("8. Imprimir GraphHash");
             System.out.println("9. Finalizar Programa");
             System.out.print("---> ");
@@ -43,10 +44,13 @@ public class Menu {
                     GH.crearGrafo();
                     break;
                 case 1 :
-                    if(GH.estanConectados(null,null))
+                    if(GH.estanConectados())
                         System.out.print("SI estan conectados");
                     else
                         System.out.print("NO estan conectados");
+                    break;
+                case 2:
+                    GH.listaConectados().forEach(s -> System.out.print("<"+s+">"));
                     break;
                 case 8 :
                     GH.print();
@@ -55,7 +59,7 @@ public class Menu {
                     exit = true;
                     break;
                 default :
-                    System.out.println("Solo numeros del 0 al 2\n");
+                    System.out.println("Introduce un numero valido\n");
             }
         }
     }
