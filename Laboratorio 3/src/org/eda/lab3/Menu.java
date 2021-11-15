@@ -50,7 +50,7 @@ public class Menu {
                         System.out.print("NO estan conectados");
                     break;
                 case 2:
-                    GH.listaConectados().forEach(s -> System.out.print("<"+s+">"));
+                    GH.listaConectados().forEach(s -> System.out.print("<"+s+"> "));
                     break;
                 case 8 :
                     GH.print();

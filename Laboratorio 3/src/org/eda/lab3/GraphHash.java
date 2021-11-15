@@ -152,7 +152,7 @@ public class GraphHash
                 if(g.get(a1).isEmpty() || g.get(a2).isEmpty())
                 {
                     long endTime=System.nanoTime();
-                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en comprobar conexion");
                     return false;
                 }
                 else if(!g.get(a1).contains(a2))
@@ -179,13 +179,13 @@ public class GraphHash
                         }
                     }
                     long endTime=System.nanoTime();
-                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en comprobar conexion");
                     return enc;
                 }
                 else
                 {
                     long endTime=System.nanoTime();
-                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ejecutarse");
+                    System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en comprobar conexion");
                     return true;
                 }
             }
@@ -217,13 +217,15 @@ public class GraphHash
         Queue<String> sinExplorar = new LinkedList<>(g.get(a1));
         HashSet<String> HSsinExplorar = new HashSet<>(g.get(a1));
         HashSet<String> Explorados = new HashSet<>();
+        HashMap<String, String> backpointers=new HashMap<>();
+        String unActor=null;
         boolean enc = false;
 
         Explorados.add(a1);
-
+        backpointers.put(a1,null);
         while (!HSsinExplorar.isEmpty() && !enc)
         {
-            String unActor = sinExplorar.remove();
+            unActor = sinExplorar.remove();
             HSsinExplorar.remove(unActor);
             Explorados.add(unActor);
             if (unActor.compareTo(a2) == 0)
@@ -231,14 +233,37 @@ public class GraphHash
                 enc = true;
             } else
             {
+                String finalUnActor = unActor;
                 g.get(unActor).forEach(s ->
                 {
                     if (!Explorados.contains(s) && !HSsinExplorar.contains(s)) {
                         sinExplorar.add(s);
                         HSsinExplorar.add(s);
+                        backpointers.put(s, finalUnActor);
                     }
                 });
             }
+        }
+        if(enc)
+        {
+            ArrayList<String> lista = new ArrayList<>();
+
+            while (unActor!=null)
+            {
+                lista.add(unActor);
+                unActor=backpointers.get(unActor);
+            }
+            lista.add(a1);
+            Collections.reverse(lista);
+            long endTime=System.nanoTime();
+            System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en encontrar el camino");
+            return lista;
+        }
+        else
+        {
+            long endTime=System.nanoTime();
+            System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en encontrar el camino");
+            return new ArrayList<>();
         }
 
     }
