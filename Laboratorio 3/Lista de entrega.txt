@@ -1,0 +1,4 @@
+* Programa -> Dentro de /src
+* Numero de relaciones por tiempo -> /src (Lo imprime al correr el metodo) && EDA Documentacion Lab3.pdf
+* Documentacion -> EDA Documentacion Lab3.pdf
+* Checklist -> Checklist.pdf
