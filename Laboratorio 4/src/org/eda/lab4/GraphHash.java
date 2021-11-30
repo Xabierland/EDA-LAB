@@ -269,30 +269,50 @@ public class GraphHash
 
     public HashMap<String, Double> pageRank()
     {
-        HashMap<String, Double> pr=new HashMap<>();
+        HashMap<String, Double> itr_prev=new HashMap<>();
+        HashMap<String, Double> itr_act=new HashMap<>();
         double limite=0.0001;
-        double dif=0.0;
+        double diff =0.0;
         int itr=0;
-        double N;
         double d=0.85;
-
-        while (dif<limite)
+        double N = g.size();
+        long statTime=System.nanoTime();
+        while (diff < limite)
         {
-            if(itr==0)
+            if(itr==0)  //En la primera iteracion damos el mismo valor a todos los elementos
             {
-                N=g.size();
                 for(Map.Entry<String, ArrayList<String>> entry:g.entrySet())
                 {
-                    pr.put(entry.getKey(), 1/N);
+                    itr_act.put(entry.getKey(), 1/N);
                 }
             }
             else
             {
+                itr_prev=itr_act;
+                itr_act.clear();
 
+                for(Map.Entry<String, ArrayList<String>> entry:g.entrySet())
+                {
+                    double sum=0;
+                    for(String s:entry.getValue())
+                    {
+                        sum+=itr_prev.get(s)/g.get(s).size();
+                    }
+
+                    itr_act.put(entry.getKey(), ((1-d)/N)+d * sum);
+                }
+                for(Map.Entry<String,ArrayList<String>> entry:g.entrySet())
+                {
+                    double dif=itr_prev.get(entry.getKey())-itr_act.get(entry.getKey());
+                    diff=Math.abs(dif);
+                }
             }
+
+            long endTime=System.nanoTime();
+            System.out.println("\titeracion:\t"+itr+"\tdiff:\t"+diff+"\ttime:\t"+((endTime-statTime)/1000000000)+"s");
             itr++;
         }
 
-        return pr;
+        return itr_act;
     }
 }

@@ -34,6 +34,7 @@ public class Menu {
             System.out.println("0. Cargar los datos");
             System.out.println("1. Comprobar Conexion");
             System.out.println("2. Lista de conexion");
+            System.out.println("3. PageRank");
             System.out.println("8. Imprimir GraphHash");
             System.out.println("9. Finalizar Programa");
             System.out.print("---> ");
@@ -51,6 +52,9 @@ public class Menu {
                     break;
                 case 2:
                     GH.listaConectados().forEach(s -> System.out.print("<"+s+"> "));
+                    break;
+                case 3:
+                    GH.pageRank();
                     break;
                 case 8 :
                     GH.print();
