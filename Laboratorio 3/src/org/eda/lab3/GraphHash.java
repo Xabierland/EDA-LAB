@@ -54,7 +54,7 @@ public class GraphHash
             default:
                 System.out.println("Solo numeros del 0 al 4\n");
         }
-
+        g.clear();
         cargarFichero(Dir);
     }
 

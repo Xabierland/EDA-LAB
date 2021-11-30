@@ -24,7 +24,7 @@ public class GraphHash
     {
         Scanner sn=new Scanner(System.in);
         int opcion;
-        String Dir="Laboratorio 3/src/files/lista.txt";
+        String Dir="Laboratorio 4/src/files/lista.txt";
         System.out.println("\nSeleccione una lista sobre la que trabajar:");
         System.out.println("0. Lista de 10 elementos");
         System.out.println("1. Lista de 20.000 elementos");
@@ -36,16 +36,16 @@ public class GraphHash
         sn.nextLine();
         switch (opcion) {
             case 0:
-                Dir="Laboratorio 3/src/files/lista.txt";
+                Dir="Laboratorio 4/src/files/lista.txt";
                 break;
             case 1:
-                Dir="Laboratorio 3/src/files/lista_20000.txt";
+                Dir="Laboratorio 4/src/files/lista_20000.txt";
                 break;
             case 2:
-                Dir="Laboratorio 3/src/files/lista_50000.txt";
+                Dir="Laboratorio 4/src/files/lista_50000.txt";
                 break;
             case 3:
-                Dir="Laboratorio 3/src/files/lista_completa.txt";
+                Dir="Laboratorio 4/src/files/lista_completa.txt";
                 break;
             case 4:
                 System.out.println("Introducce una direccion valida");
@@ -54,7 +54,7 @@ public class GraphHash
             default:
                 System.out.println("Solo numeros del 0 al 4\n");
         }
-
+        g.clear();
         cargarFichero(Dir);
     }
 
@@ -277,9 +277,8 @@ public class GraphHash
         double d=0.85;
         double N = g.size();
         long statTime=System.nanoTime();
-        while (diff > limite)
+        while(diff > limite)
         {
-            diff=1;
             if(itr==0)  //En la primera iteracion damos el mismo valor a todos los elementos
             {
                 for(Map.Entry<String, ArrayList<String>> entry:g.entrySet())
@@ -301,15 +300,16 @@ public class GraphHash
 
                     itr_act.put(entry.getKey(), ((1-d)/N)+d * sum);
                 }
+                diff=0;
                 for(Map.Entry<String,ArrayList<String>> entry:g.entrySet())
                 {
-                    double dif=itr_prev.get(entry.getKey())-itr_act.get(entry.getKey());
-                    diff+=Math.abs(dif);
+                    Double dif=(Math.abs(itr_prev.get(entry.getKey())-itr_act.get(entry.getKey())));
+                    diff+=dif;
                 }
             }
 
             long endTime=System.nanoTime();
-            System.out.println("\titeracion:\t"+itr+"\t\tdiff:\t"+diff+"\t\ttime:\t"+((endTime-statTime)/1000000000)+"s");
+            System.out.println("\titeracion:\t"+itr+"\t\tdiff:\t"+String.format("%.14f",diff)+"\t\ttime:\t"+((endTime-statTime)/1000000000)+"s");
             itr++;
         }
 
