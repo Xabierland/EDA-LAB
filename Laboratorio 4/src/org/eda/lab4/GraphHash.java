@@ -327,7 +327,7 @@ public class GraphHash
         }
         ArrayList<Par> parejas = ordenarPorPageRank(actores);
         long endTime=System.nanoTime();
-        System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ordenar la lista");
+        System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ordenar la lista\n");
         return parejas;
     }
 

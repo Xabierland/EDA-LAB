@@ -1,6 +1,7 @@
 package org.eda.lab4;
 
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Menu {
     //Attributes
@@ -58,7 +59,8 @@ public class Menu {
                     GH.pageRank(true);
                     break;
                 case 4:
-                    GH.ordenarPorPageRank().forEach(p -> System.out.print("<"+p.getName()+" | "+String.format("%.14f",p.getPageRank())+"> "));
+                    AtomicInteger i = new AtomicInteger();
+                    GH.ordenarPorPageRank().forEach(p -> System.out.println(i.getAndIncrement() +"\t<"+p.getName()+" | "+String.format("%.14f",p.getPageRank())+"> "));
                     break;
                 case 8 :
                     GH.print();
