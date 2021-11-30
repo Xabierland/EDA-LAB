@@ -319,17 +319,28 @@ public class GraphHash
 
     public ArrayList<Par> ordenarPorPageRank()
     {
-        HashMap<String, Double> HS_pageRank=pageRank(false);
+        long statTime=System.nanoTime();
         ArrayList<String> actores=new ArrayList<>();
-        for(Map.Entry<String, ArrayList<String>> entry : g.entrySet())
+        for(Map.Entry<String,ArrayList<String>> entry:g.entrySet())
         {
             actores.add(entry.getKey());
         }
-        return RadixSort(actores);
+        ArrayList<Par> parejas = ordenarPorPageRank(actores);
+        long endTime=System.nanoTime();
+        System.out.println(((endTime-statTime)/1000000000)+" segundos a tardado en ordenar la lista");
+        return parejas;
     }
 
-    private ArrayList<Par> RadixSort(ArrayList<String> actores)
+    private ArrayList<Par> ordenarPorPageRank(ArrayList<String> actores)
     {
-
+        HashMap<String, Double> HS_pageRank=pageRank(false);
+        ArrayList<Par> act=new ArrayList<>();
+        for(String s:actores)
+        {
+            Par par=new Par(s, HS_pageRank.get(s));
+            act.add(par);
+        }
+        Collections.sort(act, Comparator.comparingDouble(Par::getPageRank).reversed());
+        return act;
     }
 }

@@ -58,7 +58,7 @@ public class Menu {
                     GH.pageRank(true);
                     break;
                 case 4:
-                    GH.ordenarPorPageRank().forEach(p -> System.out.print("<"+p.actor+"> "));
+                    GH.ordenarPorPageRank().forEach(p -> System.out.print("<"+p.getName()+" | "+String.format("%.14f",p.getPageRank())+"> "));
                     break;
                 case 8 :
                     GH.print();
