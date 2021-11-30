@@ -267,7 +267,7 @@ public class GraphHash
         }
     }
 
-    public HashMap<String, Double> pageRank()
+    public HashMap<String, Double> pageRank(boolean print)
     {
         HashMap<String, Double> itr_prev=new HashMap<>();
         HashMap<String, Double> itr_act=new HashMap<>();
@@ -309,10 +309,27 @@ public class GraphHash
             }
 
             long endTime=System.nanoTime();
-            System.out.println("\titeracion:\t"+itr+"\t\tdiff:\t"+String.format("%.14f",diff)+"\t\ttime:\t"+((endTime-statTime)/1000000000)+"s");
+            if(print)
+                System.out.println("\titeracion:\t"+itr+"\t\tdiff:\t"+String.format("%.14f",diff)+"\t\ttime:\t"+((endTime-statTime)/1000000000)+"s");
             itr++;
         }
 
         return itr_act;
+    }
+
+    public ArrayList<Par> ordenarPorPageRank()
+    {
+        HashMap<String, Double> HS_pageRank=pageRank(false);
+        ArrayList<String> actores=new ArrayList<>();
+        for(Map.Entry<String, ArrayList<String>> entry : g.entrySet())
+        {
+            actores.add(entry.getKey());
+        }
+        return RadixSort(actores);
+    }
+
+    private ArrayList<Par> RadixSort(ArrayList<String> actores)
+    {
+
     }
 }

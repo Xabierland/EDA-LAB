@@ -32,9 +32,10 @@ public class Menu {
             System.out.println("\t\t Menu Principal \n");
             System.out.println("Seleccione una de las siguientes opciones:\n");
             System.out.println("0. Cargar los datos");
-            System.out.println("1. Comprobar Conexion");
-            System.out.println("2. Lista de conexion");
-            System.out.println("3. PageRank");
+            System.out.println("1. Comprobar conexion");
+            System.out.println("2. Obtener lista de conexion");
+            System.out.println("3. Calcular PageRank");
+            System.out.println("4. Obtener lista ordenada de PageRank");
             System.out.println("8. Imprimir GraphHash");
             System.out.println("9. Finalizar Programa");
             System.out.print("---> ");
@@ -54,7 +55,10 @@ public class Menu {
                     GH.listaConectados().forEach(s -> System.out.print("<"+s+"> "));
                     break;
                 case 3:
-                    GH.pageRank();
+                    GH.pageRank(true);
+                    break;
+                case 4:
+                    GH.ordenarPorPageRank().forEach(p -> System.out.print("<"+p.actor+"> "));
                     break;
                 case 8 :
                     GH.print();
