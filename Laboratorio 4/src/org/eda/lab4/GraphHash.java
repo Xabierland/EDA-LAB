@@ -272,13 +272,14 @@ public class GraphHash
         HashMap<String, Double> itr_prev=new HashMap<>();
         HashMap<String, Double> itr_act=new HashMap<>();
         double limite=0.0001;
-        double diff =0.0;
+        double diff=1;
         int itr=0;
         double d=0.85;
         double N = g.size();
         long statTime=System.nanoTime();
-        while (diff < limite)
+        while (diff > limite)
         {
+            diff=1;
             if(itr==0)  //En la primera iteracion damos el mismo valor a todos los elementos
             {
                 for(Map.Entry<String, ArrayList<String>> entry:g.entrySet())
@@ -288,8 +289,7 @@ public class GraphHash
             }
             else
             {
-                itr_prev=itr_act;
-                itr_act.clear();
+                itr_prev.putAll(itr_act);
 
                 for(Map.Entry<String, ArrayList<String>> entry:g.entrySet())
                 {
@@ -304,12 +304,12 @@ public class GraphHash
                 for(Map.Entry<String,ArrayList<String>> entry:g.entrySet())
                 {
                     double dif=itr_prev.get(entry.getKey())-itr_act.get(entry.getKey());
-                    diff=Math.abs(dif);
+                    diff+=Math.abs(dif);
                 }
             }
 
             long endTime=System.nanoTime();
-            System.out.println("\titeracion:\t"+itr+"\tdiff:\t"+diff+"\ttime:\t"+((endTime-statTime)/1000000000)+"s");
+            System.out.println("\titeracion:\t"+itr+"\t\tdiff:\t"+diff+"\t\ttime:\t"+((endTime-statTime)/1000000000)+"s");
             itr++;
         }
 
