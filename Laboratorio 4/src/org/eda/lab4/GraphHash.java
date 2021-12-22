@@ -340,7 +340,7 @@ public class GraphHash
             Par par=new Par(s, HS_pageRank.get(s));
             act.add(par);
         }
-        Collections.sort(act, Comparator.comparingDouble(Par::getPageRank).reversed());
+        act.sort(Comparator.comparingDouble(Par::getPageRank).reversed());
         return act;
     }
 }
