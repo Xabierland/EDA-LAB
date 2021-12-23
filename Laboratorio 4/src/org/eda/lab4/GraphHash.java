@@ -7,6 +7,7 @@ import java.util.*;
 public class GraphHash
 {
     private HashMap<String, ArrayList<String>> g;
+    private HashMap<String, Double> HS_pageRank=new HashMap<>();
     private static GraphHash miGH=null;
 
     private GraphHash() {g=new HashMap<>();}
@@ -132,7 +133,7 @@ public class GraphHash
         return estanConectados(a1,a2);
     }
 
-    public boolean estanConectados(String a1, String a2)
+    private boolean estanConectados(String a1, String a2)
     {
         if(!g.containsKey(a1))
         {
@@ -205,7 +206,7 @@ public class GraphHash
             return new ArrayList<>();
     }
 
-    public ArrayList<String> listaConectados(String a1, String a2)
+    private ArrayList<String> listaConectados(String a1, String a2)
     {
         return pathFinder(a1,a2);
     }
@@ -314,6 +315,7 @@ public class GraphHash
             itr++;
         }
 
+        HS_pageRank.putAll(itr_act);
         return itr_act;
     }
 
@@ -333,7 +335,9 @@ public class GraphHash
 
     private ArrayList<Par> ordenarPorPageRank(ArrayList<String> actores)
     {
-        HashMap<String, Double> HS_pageRank=pageRank(false);
+        if(HS_pageRank.isEmpty()) {
+            HS_pageRank = pageRank(false);
+        }
         ArrayList<Par> act=new ArrayList<>();
         for(String s:actores)
         {
